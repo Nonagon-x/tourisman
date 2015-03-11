@@ -57,7 +57,7 @@
 				</button>
 			</div>
 			
-			<?php if($this->config->item("allow_signup", "zimpler")) : ?>
+			<?php if($this->config->item("allow_signup", "tourisman")) : ?>
 			<p>
 				<i class="uk-icon-edit uk-icon-small uk-text-primary"></i>
 				<a href="signup"><b><?php echo lang('login_signup');?></b></a>
@@ -67,8 +67,8 @@
 			<?php endif ?>
 			
 			<p class="uk-text-muted uk-margin-large-top">
-				Powered by <a href="https://www.github.com/nonagon-x/zimpler" target="zimpler">Zimpler</a> - 
-				The Micro CMS
+				Powered by <a href="https://www.github.com/nonagon-x/tourisman" target="tourisman">Tourisman</a> - 
+				The Open Source Tourism Management System
 			</p>
 			
 			<?php echo form_close();?>

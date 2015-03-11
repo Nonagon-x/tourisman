@@ -162,8 +162,8 @@
 			</button>
 			
 			<p class="uk-text-muted uk-margin-large-top">
-				Powered by <a href="https://www.github.com/nonagon-x/zimpler" target="zimpler">Zimpler</a> - 
-				The Micro CMS
+				Powered by <a href="https://www.github.com/nonagon-x/tourisman" target="tourisman">Tourisman</a> - 
+				The Open Source Tourism Management System
 			</p>
 			
 			<?php echo form_close();?>

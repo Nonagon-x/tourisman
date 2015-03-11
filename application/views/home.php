@@ -6,7 +6,7 @@
 		<div class="uk-margin-large-top">
 			<h2 class="uk-text-muted">
 				This is just another site made by
-				<a href="http://www.github.com/nonagon-x/zimpler">Zimpler</a>.
+				<a href="http://www.github.com/nonagon-x/tourisman">Tourisman</a>.
 			</h2>
 		</div>
 	</div>

@@ -1,14 +1,14 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * Zimpler
+ * Tourisman
  *
  * An open source CMS for PHP 5.1.6 or newer
  *
- * @package		Zimpler
+ * @package		Tourisman
  * @author		Chonnarong Hanyawongse
  * @copyright	Copyright (c) 2008 - 2015, Nonagon, Ltd.
- * @license		http://zimpler.com/user_guide/license.html
- * @link		http://zimpler.com
+ * @license		http://tourisman.com/user_guide/license.html
+ * @link		http://tourisman.com
  * @since		Version 0.1
  * @filesource
  */
@@ -16,13 +16,13 @@
 // ------------------------------------------------------------------------
 
 /**
- * Zimpler User Model Class
+ * Tourisman User Model Class
  *
- * @package		Zimpler
+ * @package		Tourisman
  * @subpackage	User Module
  * @category	Libraries
  * @author		Chonnarong Hanyawongse
- * @link		http://zimpler.com/user_guide/user/user_model.html
+ * @link		http://tourisman.com/user_guide/user/user_model.html
  */
 
 class User_model extends CI_Model {

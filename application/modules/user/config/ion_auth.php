@@ -90,7 +90,7 @@ $config['salt_prefix']    = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' 
 $config['site_title']                 = $CI->config->item('site_title');
 
 // Admin Email, admin@example.com
-$config['admin_email']                = "admin@zimpler.com";
+$config['admin_email']                = "admin@tourisman.com";
 
 // Default group, use name
 $config['default_group']              = 'members';
