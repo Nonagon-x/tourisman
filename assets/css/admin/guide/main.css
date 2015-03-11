@@ -1,0 +1,18 @@
+.n-children-container .n-item {
+
+	padding-left: 30px;
+}
+
+.n-item {
+
+	margin-top: 15px;
+	font-size: 14px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 15px;
+}
+
+.n-item  .n-cost-box {
+
+	width: 100px;
+	margin: 0px;
+}

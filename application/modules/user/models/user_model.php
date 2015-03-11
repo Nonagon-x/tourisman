@@ -2,7 +2,7 @@
 /**
  * Tourisman
  *
- * An open source CMS for PHP 5.1.6 or newer
+ * An Open Source Tourism Management System for PHP 5.1.6 or newer
  *
  * @package		Tourisman
  * @author		Chonnarong Hanyawongse
