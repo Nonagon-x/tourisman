@@ -1,5 +1,5 @@
 <form name="mainForm" class="uk-form n-abs-fit" novalidate="" ng-submit="save($event)" 
-	  ng-modules="setting-general" ng-controller="SettingGeneralController" 
+	  ng-modules="setting-general" ng-controller="GuideMainController" 
 	  action="<?= base_url("/admin/setting/general"); ?>"
 	  ng-init="successMessage = '<?= lang("setting_save_success_message") ?>';"
 	  n-dirty-check="" n-focus-on-error="" ng-cloak="">
@@ -20,6 +20,20 @@
 			</div>
 			<hr/>
 			<div class="uk-panel">
+				<script type="text/ng-template" id="renderer.html">
+					<div ui-tree-handle>
+						{{region.title}}
+					</div>
+					<ol ui-tree-nodes="" ng-model="region.regions">
+						<li ng-repeat="region in region.regions" ui-tree-node ng-include="'renderer.html'"></li>
+					</ol>
+				</script>
+				<div ui-tree>
+					<ol ui-tree-nodes="" ng-model="editingData.regions" id="tree-root">
+						<li ng-repeat="region in editingData.regions" ui-tree-node ng-include="'renderer.html'"></li>
+					</ol>
+				</div>
+
 				<div class="uk-panel uk-panel-box">
 					<div class="uk-panel-title">
 						Thailand
