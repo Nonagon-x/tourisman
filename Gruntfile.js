@@ -20,6 +20,7 @@ module.exports = function(grunt) {
 						'bower_components/angular-validation-match/dist/angular-input-match.min.js',
 						'bower_components/angular-modularizer/angular-modularizer.js',
 						'bower_components/angular-ui-sortable/sortable.min.js',
+						'bower_components/angular-ui-tree/dist/angular-ui-tree.min.js',
 						'bower_components/freezeh/freezeh.js',
 						'bower_components/codemirror/lib/codemirror.js',
 						'bower_components/codemirror/mode/markdown/markdown.js',
@@ -48,6 +49,7 @@ module.exports = function(grunt) {
 						'bower_components/uikit/css/components/notify.almost-flat.min.css',
 						'bower_components/uikit/css/components/tooltip.almost-flat.min.css',
 						'bower_components/intl-tel-input/build/css/intlTelInput.css',
+						'bower_components/angular-ui-tree/dist/angular-ui-tree.min.css',
 						'bower_components/codemirror/lib/codemirror.css']
 				}
 			}
