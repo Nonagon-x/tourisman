@@ -15,80 +15,62 @@
 					Base Cost by Regions
 				</div>
 				<button type="button" class="uk-button uk-button-success uk-float-right">
-					<i class="uk-icon-plus"></i> New
+					<i class="uk-icon-plus"></i> New Region
 				</button>
 			</div>
 			<hr/>
 			<div class="uk-panel">
 				<script type="text/ng-template" id="renderer.html">
-					<div ui-tree-handle>
-						{{region.title}}
+					<div class="n-item uk-grid uk-grid-small uk-margin-top" ui-tree-handle>
+						<div class="uk-width-1-2">
+							<a ng-click="toggle(this)"><i class="uk-icon-plus-square-o uk-icon-medium"></i></a>
+							<div class="uk-display-inline-block uk-margin-left">
+								{{region.title}}
+							</div>
+						</div>
+						<div class="uk-width-1-2 uk-text-right">
+							<input type="text" class="n-cost-box uk-text-right" ng-model="region.cost" />
+							<select ng-model="region.unit">
+								<option value="Tour">Tour</option>
+								<option value="Day">Day</option>
+							</select>
+							<button type="button" class="uk-button uk-button-success">
+								<i class="uk-icon-plus"></i>
+							</button>
+							<button type="button" class="uk-button uk-button-danger">
+								<i class="uk-icon-minus"></i>
+							</button>
+						</div>
 					</div>
 					<ol ui-tree-nodes="" ng-model="region.regions">
 						<li ng-repeat="region in region.regions" ui-tree-node ng-include="'renderer.html'"></li>
 					</ol>
 				</script>
-				<div ui-tree>
-					<ol ui-tree-nodes="" ng-model="editingData.regions" id="tree-root">
-						<li ng-repeat="region in editingData.regions" ui-tree-node ng-include="'renderer.html'"></li>
-					</ol>
-				</div>
-
-				<div class="uk-panel uk-panel-box">
-					<div class="uk-panel-title">
-						Thailand
-						<hr/>
-					</div>
-					<div class="n-item uk-grid uk-grid-small uk-margin-top">
-						<div class="uk-width-1-2">
-							<a><i class="uk-icon-plus-square-o uk-icon-medium"></i></a>
-							<div class="uk-display-inline-block uk-margin-left">
-								Around Thailand
+				<div class="uk-panel uk-panel-box uk-margin-bottom" ng-repeat="region in editingData.regions">
+					<div class="n-header uk-panel-title uk-margin-bottom-remove">
+						<div class="uk-grid">
+							<div class="uk-width-1-2">
+								{{region.title}}
 							</div>
-						</div>
-						<div class="uk-width-1-2 uk-text-right">
-							<span class="n-cost-box uk-alert uk-alert-success uk-display-inline-block">1,500 / Day</span>
-							<button type="button" class="uk-button uk-button-success">
-								<i class="uk-icon-plus"></i>
-							</button>
+							<div class="uk-width-1-2 uk-text-right">
+								<button type="button" class="uk-button uk-button-success">
+									<i class="uk-icon-plus"></i>
+								</button>
+								<button type="button" class="uk-button uk-button-danger">
+									<i class="uk-icon-minus"></i>
+								</button>
+							</div>
 						</div>
 					</div>
-					<div class="n-children-container">
-						<div class="n-item">
-							<div class="uk-grid uk-grid-small">
-								<div class="uk-width-1-2">
-									<a><i class="uk-icon-map-marker uk-icon-medium"></i></a>
-									<div class="uk-display-inline-block uk-margin-left">
-										Bangkok
-									</div>
-								</div>
-								<div class="uk-width-1-2 uk-text-right">
-									<span class="n-cost-box uk-alert uk-alert-warning uk-display-inline-block">500 / Tour</span>
-									<button type="button" class="uk-button uk-button-success">
-										<i class="uk-icon-plus"></i>
-									</button>
-								</div>
-							</div>
-						</div>
-						<div class="n-item">
-							<div class="uk-grid uk-grid-small">
-								<div class="uk-width-1-2">
-									<a><i class="uk-icon-map-marker uk-icon-medium"></i></a>
-									<div class="uk-display-inline-block uk-margin-left">
-										Rachaburi
-									</div>
-								</div>
-								<div class="uk-width-1-2 uk-text-right">
-									<span class="n-cost-box uk-alert uk-alert-warning uk-display-inline-block">500 / Tour</span>
-									<button type="button" class="uk-button uk-button-success">
-										<i class="uk-icon-plus"></i>
-									</button>
-								</div>
-							</div>
-						</div>
+					<div class="uk-grid uk-grid-small uk-margin-remove" ui-tree>
+						<ol ui-tree-nodes="" ng-model="region.regions" class="uk-width-1-1">
+							<li ng-repeat="region in region.regions" ui-tree-node ng-include="'renderer.html'"></li>
+						</ol>
 					</div>
 				</div>
 			</div>
+
+
 		</div>
     </div>
 </div>

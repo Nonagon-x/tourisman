@@ -1,12 +1,24 @@
-.n-children-container .n-item {
+[ui-tree] ol {
 
-	padding-left: 30px;
+	list-style: none;
 }
 
-.n-item {
+[ui-tree] ol li:first-child .n-item {
+
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 15px;
+}}
+
+[ui-tree] ol li:not(:last-child) .n-item {
 
 	margin-top: 15px;
 	font-size: 14px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 15px;
+}
+
+.n-header {
+
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 15px;
 }

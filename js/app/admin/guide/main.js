@@ -1,6 +1,7 @@
 angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', 'ui.tree'])
 
-.controller("GuideMainController", ['$scope', 'submitForm', 'checkFormDirty', function($scope, submitForm, checkFormDirty) {
+.controller("GuideMainController", ['$scope', 'submitForm', 'checkFormDirty', 
+	function($scope, submitForm, checkFormDirty) {
 	
 	$scope.editingData = {};
 
@@ -46,6 +47,12 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 		}
 	];
 
+	$scope.toggle = function(scope) {
+
+		console.debug(scope);
+		scope.toggle();
+	}
+
 	$scope.save = function($event) {
 		
 		if($event)
@@ -75,7 +82,7 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 			$scope.mainForm.$setUntouched();
 		});
 	}
-	
+
 	$scope.$on('init', function(event, args) {
 		
 		$scope.originalData = angular.copy($scope.editingData);
