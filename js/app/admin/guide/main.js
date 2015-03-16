@@ -55,7 +55,7 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 		parent.regions.push(data);
 	};
 
-	$scope.removeRegion = function(scope) {
+	$scope.removeRegionConfirmation = function(proceed) {
 
 		modal.show(
 			"Are you sure you want to remove this item?<br/>" +
@@ -68,28 +68,27 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 			})
 			.ok(function() {
 				
-				scope.remove();
+				proceed();
 			});
+	}
+
+	$scope.removeRegion = function(scope) {
+
+		$scope.removeRegionConfirmation(function() {
+
+			scope.remove();
+		});
 	}
 
 	$scope.removeRootRegion = function(region) {
 
-		modal.show(
-			"Are you sure you want to remove this item?<br/>" +
-			"All children items will be also removed if presented.", 
-			"Confirmation", {
-				
-				danger: true,
-				bgclose: true,
-				icon: "exclamation-circle"
-			})
-			.ok(function() {
-						
-				$scope.editingData.regions = $.grep($scope.editingData.regions, function(item) {
+		$scope.removeRegionConfirmation(function() {
 
-					return item != region;
-				});
+			$scope.editingData.regions = $.grep($scope.editingData.regions, function(item) {
+
+				return item != region;
 			});
+		});
 	}
 
 	$scope.toggle = function(scope) {
