@@ -133,7 +133,10 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 
 		setTimeout(function() {
 
-			$($event.target).parent().find('input[type=text]').focus();
+			var input = $($event.target).parent().find('input[type=text]');
+
+			input.focus();
+			input.select();
 
 		}, 100);
 	}
