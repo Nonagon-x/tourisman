@@ -1,7 +1,7 @@
 angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', 'ui.tree'])
 
-.controller("GuideMainController", ['$scope', 'submitForm', 'checkFormDirty', 
-	function($scope, submitForm, checkFormDirty) {
+.controller("GuideMainController", ['$scope', 'submitForm', 'checkFormDirty', 'modal',
+	function($scope, submitForm, checkFormDirty, modal) {
 	
 	$scope.regionTreeOptions = {};
 	$scope.editingData = {};
@@ -57,15 +57,39 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 
 	$scope.removeRegion = function(scope) {
 
-		scope.remove();
+		modal.show(
+			"Are you sure you want to remove this item?<br/>" +
+			"All children items will be also removed if presented.", 
+			"Confirmation", {
+				
+				danger: true,
+				bgclose: true,
+				icon: "exclamation-circle"
+			})
+			.ok(function() {
+				
+				scope.remove();
+			});
 	}
 
 	$scope.removeRootRegion = function(region) {
 
-		$scope.editingData.regions = $.grep($scope.editingData.regions, function(item) {
+		modal.show(
+			"Are you sure you want to remove this item?<br/>" +
+			"All children items will be also removed if presented.", 
+			"Confirmation", {
+				
+				danger: true,
+				bgclose: true,
+				icon: "exclamation-circle"
+			})
+			.ok(function() {
+						
+				$scope.editingData.regions = $.grep($scope.editingData.regions, function(item) {
 
-			return item != region;
-		});
+					return item != region;
+				});
+			});
 	}
 
 	$scope.toggle = function(scope) {
