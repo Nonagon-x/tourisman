@@ -39,14 +39,38 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 		}
 	];
 
+	$scope.addRegion = function(parent) {
+
+		var data = {
+
+			title: "Untitled",
+			regions: []
+		};
+
+		if(parent != $scope.editingData) {
+
+			data.unit = "Day";
+		}
+
+		parent.regions.push(data);
+	};
+
+	$scope.removeRegion = function(scope) {
+
+		scope.remove();
+	}
+
+	$scope.removeRootRegion = function(region) {
+
+		$scope.editingData.regions = $.grep($scope.editingData.regions, function(item) {
+
+			return item != region;
+		});
+	}
+
 	$scope.toggle = function(scope) {
 
-		console.debug(scope);
-
-		if(scope) {
-			console.debug(scope);
-			scope.toggle();
-		}
+		scope.toggle();
 	}
 
 	$scope.save = function($event) {
@@ -77,6 +101,31 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 			$scope.mainForm.$setPristine(); 
 			$scope.mainForm.$setUntouched();
 		});
+	}
+
+	$scope.editTitle = function($event, region) {
+
+		region.editing = true;
+		region.__titleBackup = region.title;
+
+		setTimeout(function() {
+
+			$($event.target).parent().find('input[type=text]').focus();
+
+		}, 100);
+	}
+
+	$scope.handleTitleKeyDown = function($event, region) {
+
+		if($event.keyCode == 13 || $event.keyCode == 27) {
+
+			region.editing = false;
+
+			if($event.keyCode == 27) {
+
+				region.title = region.__titleBackup;
+			}
+		}
 	}
 
 	$scope.$on('init', function(event, args) {

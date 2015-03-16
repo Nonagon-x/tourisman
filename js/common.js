@@ -15,6 +15,20 @@ angular.module("common", [])
 	};
 })
 
+.directive('nKeydown', function() {
+	return {
+		restrict: 'A',
+		link: function(scope, elem, attrs) {
+			
+			elem.on('keydown', function(e){
+				
+				console.debug(e);
+				scope.$apply(attrs.nKeyDown(e));
+			});
+		}
+	};
+})
+
 .directive('nDirtyCheck', function() {
 	return {
 		restrict: 'A',

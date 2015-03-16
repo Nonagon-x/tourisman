@@ -33,6 +33,11 @@ ol li:not(:last-child) .n-item {
 	text-decoration: none;
 }
 
+.n-region-root {
+
+	background: #fffdf5;
+}
+
 .angular-ui-tree-placeholders-wrapper {
 
 	margin-top: 0px;

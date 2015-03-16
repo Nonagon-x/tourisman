@@ -12,9 +12,10 @@
 		<div class="uk-panel uk-panel-box uk-margin-top">
 			<div class="uk-panel-title uk-clearfix">
 				<div class="uk-display-inline-block" style="padding-top: 5px">
-					Base Cost by Regions
+					Base Cost by Regions / Places
 				</div>
-				<button type="button" class="uk-button uk-button-success uk-float-right">
+				<button type="button" class="uk-button uk-button-success uk-float-right"
+						ng-click="addRegion(editingData)">
 					<i class="uk-icon-plus"></i> New Region
 				</button>
 			</div>
@@ -30,7 +31,12 @@
 								</a>
 								<i class="uk-icon-square uk-icon-medium" ng-if="!region.regions || !region.regions.length"></i>
 								<div class="uk-display-inline-block uk-margin-left">
+									<span ng-click="editTitle($event, region)" ng-show="!region.editing">
 									{{region.title}}
+									</span>
+									<input type="text" class="uk-width-1-1 ng-hide" ng-show="region.editing" 
+										   ng-model="region.title" ng-blur="region.editing = false"
+										   ng-keydown="handleTitleKeyDown($event, region)" />
 								</div>
 							</div>
 							<div class="uk-width-1-2 uk-text-right">
@@ -39,10 +45,12 @@
 									<option value="Tour">Tour</option>
 									<option value="Day">Day</option>
 								</select>
-								<button type="button" class="uk-button uk-button-success">
+								<button type="button" class="uk-button uk-button-success"
+										ng-click="addRegion(region)">
 									<i class="uk-icon-plus"></i>
 								</button>
-								<button type="button" class="uk-button uk-button-danger">
+								<button type="button" class="uk-button uk-button-danger"
+										ng-click="removeRegion(this)">
 									<i class="uk-icon-minus"></i>
 								</button>
 							</div>
@@ -52,17 +60,24 @@
 						<li ng-repeat="region in region.regions" ui-tree-node ng-include="'renderer.html'"></li>
 					</ol>
 				</script>
-				<div class="uk-panel uk-panel-box uk-margin-bottom" ng-repeat="region in editingData.regions">
+				<div class="uk-panel uk-panel-box uk-margin-bottom n-region-root" ng-repeat="region in editingData.regions">
 					<div class="n-header uk-panel-title uk-margin-bottom-remove">
 						<div class="uk-grid">
 							<div class="uk-width-1-2">
+								<span ng-click="editTitle($event, region)" ng-show="!region.editing">
 								{{region.title}}
+								</span>
+								<input type="text" class="uk-width-1-1 ng-hide" ng-show="region.editing" 
+									   ng-model="region.title" ng-blur="region.editing = false"
+									   ng-keydown="handleTitleKeyDown($event, region)" />
 							</div>
 							<div class="uk-width-1-2 uk-text-right">
-								<button type="button" class="uk-button uk-button-success">
+								<button type="button" class="uk-button uk-button-success"
+										ng-click="addRegion(region)">
 									<i class="uk-icon-plus"></i>
 								</button>
-								<button type="button" class="uk-button uk-button-danger">
+								<button type="button" class="uk-button uk-button-danger"
+										ng-click="removeRootRegion(region)">
 									<i class="uk-icon-minus"></i>
 								</button>
 							</div>
@@ -79,4 +94,4 @@
 
 		</div>
     </div>
-</div>
+</form>
