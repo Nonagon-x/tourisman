@@ -1,17 +1,16 @@
-[ui-tree] ol {
+ol {
 
 	list-style: none;
 }
 
-[ui-tree] ol li:first-child .n-item {
+ol li .n-item {
 
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 15px;
 }}
 
-[ui-tree] ol li:not(:last-child) .n-item {
+ol li:not(:last-child) .n-item {
 
-	margin-top: 15px;
 	font-size: 14px;
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 15px;
@@ -27,4 +26,25 @@
 
 	width: 100px;
 	margin: 0px;
+}
+
+.n-item a:hover {
+
+	text-decoration: none;
+}
+
+.angular-ui-tree-placeholders-wrapper {
+
+	margin-top: 0px;
+}
+
+.angular-ui-tree-placeholder {
+
+	border: 1px dash #ddd;
+	background: #efefef;
+}
+
+.angular-ui-tree-drag-wrapper {
+
+	margin-top: -15px;
 }

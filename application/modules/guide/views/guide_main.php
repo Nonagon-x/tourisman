@@ -1,6 +1,6 @@
 <form name="mainForm" class="uk-form n-abs-fit" novalidate="" ng-submit="save($event)" 
-	  ng-modules="setting-general" ng-controller="GuideMainController" 
-	  action="<?= base_url("/admin/setting/general"); ?>"
+	  ng-modules="guide-main" ng-controller="GuideMainController" 
+	  action="<?= base_url("/admin/guide/main"); ?>"
 	  ng-init="successMessage = '<?= lang("setting_save_success_message") ?>';"
 	  n-dirty-check="" n-focus-on-error="" ng-cloak="">
 		  
@@ -21,28 +21,34 @@
 			<hr/>
 			<div class="uk-panel">
 				<script type="text/ng-template" id="renderer.html">
-					<div class="n-item uk-grid uk-grid-small uk-margin-top" ui-tree-handle>
-						<div class="uk-width-1-2">
-							<a ng-click="toggle(this)"><i class="uk-icon-plus-square-o uk-icon-medium"></i></a>
-							<div class="uk-display-inline-block uk-margin-left">
-								{{region.title}}
+					<div class="n-item uk-margin-top uk-form" ui-tree-handle>
+						<div class="uk-grid uk-grid-small">
+							<div class="uk-width-1-2">
+								<a ng-click="toggle(this)" ng-if="region.regions && region.regions.length > 0">
+									<i class="uk-icon-plus-square-o uk-icon-medium" ng-show="collapsed"></i>
+									<i class="uk-icon-minus-square-o uk-icon-medium" ng-show="!collapsed"></i>
+								</a>
+								<i class="uk-icon-square uk-icon-medium" ng-if="!region.regions || !region.regions.length"></i>
+								<div class="uk-display-inline-block uk-margin-left">
+									{{region.title}}
+								</div>
+							</div>
+							<div class="uk-width-1-2 uk-text-right">
+								<input type="text" class="n-cost-box uk-text-right" ng-model="region.cost" />
+								<select ng-model="region.unit">
+									<option value="Tour">Tour</option>
+									<option value="Day">Day</option>
+								</select>
+								<button type="button" class="uk-button uk-button-success">
+									<i class="uk-icon-plus"></i>
+								</button>
+								<button type="button" class="uk-button uk-button-danger">
+									<i class="uk-icon-minus"></i>
+								</button>
 							</div>
 						</div>
-						<div class="uk-width-1-2 uk-text-right">
-							<input type="text" class="n-cost-box uk-text-right" ng-model="region.cost" />
-							<select ng-model="region.unit">
-								<option value="Tour">Tour</option>
-								<option value="Day">Day</option>
-							</select>
-							<button type="button" class="uk-button uk-button-success">
-								<i class="uk-icon-plus"></i>
-							</button>
-							<button type="button" class="uk-button uk-button-danger">
-								<i class="uk-icon-minus"></i>
-							</button>
-						</div>
 					</div>
-					<ol ui-tree-nodes="" ng-model="region.regions">
+					<ol ui-tree-nodes="" ng-model="region.regions" ng-class="{'ng-hide': collapsed}">
 						<li ng-repeat="region in region.regions" ui-tree-node ng-include="'renderer.html'"></li>
 					</ol>
 				</script>
@@ -62,7 +68,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="uk-grid uk-grid-small uk-margin-remove" ui-tree>
+					<div class="uk-grid uk-grid-small uk-margin-remove" ui-tree="regionTreeOptions" data-drag-delay="100">
 						<ol ui-tree-nodes="" ng-model="region.regions" class="uk-width-1-1">
 							<li ng-repeat="region in region.regions" ui-tree-node ng-include="'renderer.html'"></li>
 						</ol>

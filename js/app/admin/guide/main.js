@@ -3,45 +3,37 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 .controller("GuideMainController", ['$scope', 'submitForm', 'checkFormDirty', 
 	function($scope, submitForm, checkFormDirty) {
 	
+	$scope.regionTreeOptions = {};
 	$scope.editingData = {};
 
 	$scope.editingData.regions = [{
+			id: 1,
 			title: "Thailand",
 			regions: [{
 
+				id: 2,
 				title: "Around Thailand",
 				cost: 1500,
 				unit: "Day",
 				regions: [{
 
+					id: 3,
 					title: "Bangkok",
 					cost: 500,
 					unit: "Tour",
-					regions: [{
-
-						title: "Ratchaburi",
-						cost: 800,
-						unit: "Tour"
-					}, {
-
-						title: "[Default]",
-						cost: 1500,
-						unit: "Day"
-					}]
+					regions: []
 				}, {
 
+					id: 6,
 					title: "Ratchaburi",
 					cost: 800,
-					unit: "Tour"
-				}, {
-
-					title: "[Default]",
-					cost: 1500,
-					unit: "Day"
+					unit: "Tour",
+					regions: []
 				}]
 			}]
 		}, {
 
+			id: 8,
 			title: "Laos",
 			regions: []
 		}
@@ -50,7 +42,11 @@ angular.module("guide-main", ['common', 'generic-modal', 'admin', 'ngAnimate', '
 	$scope.toggle = function(scope) {
 
 		console.debug(scope);
-		scope.toggle();
+
+		if(scope) {
+			console.debug(scope);
+			scope.toggle();
+		}
 	}
 
 	$scope.save = function($event) {
